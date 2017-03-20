@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('shares');     // drop child tables first
+        Schema::dropIfExists('comments');   // otherwise contraint checks will fail
         Schema::dropIfExists('users');
     }
 }
