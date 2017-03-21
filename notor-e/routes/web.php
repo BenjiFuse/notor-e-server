@@ -20,3 +20,8 @@ Route::get('/view-notes', function() {
 	$notes = DB::table('notes')->get();
 	return view('notes', compact('notes'));
 });
+
+
+Route::get('/users/{user}', function(App\User $user) {
+	return $user->email;
+});
