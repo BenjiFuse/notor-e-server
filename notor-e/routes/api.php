@@ -19,6 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('notes', 'NotesController');
 
+// Register route doesn't validate token since it's not present yet
+Route::post('register', 'ApiAuthController@register');
+Route::post('login', 'ApiAuthController@authenticate');
+Route::post('user', 'ApiAuthController@getAuthenticatedUser')->middleware('jwt.auth');
+	
 /*
 Route::get('/', 'NotesController@index')->name('home');
 Route::post('/notes/', 'NotesController@store');
